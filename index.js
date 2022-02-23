@@ -38,7 +38,7 @@ const app = express();
 // app.use(express.static("public"));
 
 const corsOptions ={
-    origin:'http://localhost:3001', 
+    origin:['http://localhost:3001','https://i-card-frontend.vercel.app'], 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
