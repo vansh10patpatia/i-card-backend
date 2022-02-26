@@ -26,8 +26,6 @@ class AuthService {
   };
 
   static login = async (data) => {
-    const request = JSON.parse(JSON.stringify(data))
-    console.log(request,data);
     const { userid, password } = JSON.parse(JSON.stringify(data));
 
     const user = await Student.findOne({ userid: userid });
