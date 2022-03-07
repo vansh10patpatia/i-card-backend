@@ -43,6 +43,8 @@ class AuthController {
     }
   }
 
+  
+
   static all = async (req, res, next) => {
     try {
       const users = await auth.all();

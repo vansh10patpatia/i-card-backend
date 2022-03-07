@@ -1,11 +1,11 @@
 const jwt = require("../utils/jwt");
 const createError = require("http-errors");
 const auth = async (req, res, next) => {
-  if (!req.body.headers.Authorization) {
+  if (!req.headers.authorization) {
     throw createError.BadRequest("headersUnavailable");
     // return next(createError.Unauthorized("Access token is required"));
   }
-  const token = req.body.headers.Authorization.split(" ")[1];
+  const token = req.headers.authorization.split(" ")[1];
   if (!token) {
     throw createError.BadRequest("invalidToken");
     // return next(createError.Unauthorized("Access token is required"));
@@ -20,4 +20,5 @@ const auth = async (req, res, next) => {
       return createError.Unauthorized(e.message);
     });
 };
+
 module.exports = auth;
