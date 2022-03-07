@@ -6,7 +6,6 @@ const { Student } = require("../models");
 
 class AuthService {
   static register = async data => {
-    // return data
     const { userid} = data;
 
       let test_user = await Student.find({ userid:userid });
@@ -25,10 +24,14 @@ class AuthService {
     return data;
   };
 
-  static login = async (data) => {
-    const { userid, password } = JSON.parse(JSON.stringify(data));
+  static resetPassword = async (data) => {
+    
+  }
 
-    const user = await Student.findOne({ userid: userid });
+  static login = async (data) => {
+    const { email, password } = JSON.parse(JSON.stringify(data));
+
+    const user = await Student.findOne({ email: email });
     if (!user) {
       throw createError.BadRequest("User not found");
     }
@@ -42,9 +45,7 @@ class AuthService {
     return { ...user._doc, accessToken };
   };
 
-  static verifyAccessToken=()=>{
-
-  }
+  
 
   static all = async () => {
     // return "hi";
