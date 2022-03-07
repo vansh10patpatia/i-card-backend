@@ -6,21 +6,19 @@ const { Student } = require("../models");
 
 class AuthService {
   static register = async data => {
-    const { userid} = data;
+    const { email} = data;
 
-      let test_user = await Student.find({ userid:userid });
-      // console.log(test_user);
-      if (test_user.userid) {
+      let test_user = await Student.find({ email:email });
+      if (test_user.email) {
         throw createError.BadRequest("Id taken");
       }
     data.password = bcrypt.hashSync(data.password, 8);
     let user = await Student.create({
-      userid: userid,
+      email: email,
       password: data.password,
     });
-    // console.log(user);
 
-    data.accessToken = await jwt.signAccessToken(user);
+    // data.accessToken = await jwt.signAccessToken(user);
     return data;
   };
 
