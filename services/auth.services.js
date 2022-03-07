@@ -18,7 +18,7 @@ class AuthService {
       password: data.password,
     });
 
-    // data.accessToken = await jwt.signAccessToken(user);
+    data.accessToken = await jwt.signAccessToken(user);
     return data;
   };
 
