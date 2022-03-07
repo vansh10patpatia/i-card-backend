@@ -37,11 +37,13 @@ connectDB();
 const app = express();
 // app.use(express.static("public"));
 
+
 const corsOptions ={
-    origin:['http://localhost:3001','https://i-card-frontend.vercel.app'], 
+    origin:['http://localhost:3001','http://localhost:3001','https://i-card-frontend.vercel.app'], 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
+
 app.use(cors(corsOptions));
 
 // parse application/x-www-form-urlencoded
